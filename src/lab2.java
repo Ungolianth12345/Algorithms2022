@@ -33,6 +33,7 @@ public class lab2 {
         }
 
         public static String encryptCaesarCipher(String plaintext, int offset) {
+            // offset has to be positive
             plaintext = plaintext.toUpperCase();
 
             if (offset >= 26)
@@ -66,18 +67,6 @@ public class lab2 {
         //String plaintext2 = Encrypter.decryptRowColumn(plaintext, 4);
         //System.out.println(plaintext2);
 
-        String plaintext = "THISI SASEC RETME SSAGE";
 
-        String ciphertext = Encrypter.encryptCaesarCipher(plaintext, 3);
-        System.out.println("Test case 1\nOffset: 3\nExpected:\tWKLVL VDVHF UHWPH VVDJH\nActual:\t\t" + ciphertext);
-
-        String ciphertext2 = Encrypter.encryptCaesarCipher(plaintext, 7);
-        System.out.println("\nTest case 2\nOffset: 7\nExpected:\tAOPZP ZHZLJ YLATL ZZHNL\nActual:\t\t" + ciphertext2);
-
-        String ciphertext3 = Encrypter.encryptCaesarCipher(plaintext, 65);
-        System.out.println("\nTest case 3\nOffset: 65 (13)\nExpected:\tGUVFV FNFRP ERGZR FFNTR\nActual:\t\t" + ciphertext3);
-
-        String ciphertext4 = Encrypter.encryptCaesarCipher(plaintext, -1);
-        System.out.println("\nTest case 4\nOffset: -1\nExpected:\tSGHTH RZRDB QDSLD RRZFD\nActual:\t\t" + ciphertext4);
     }
 }
