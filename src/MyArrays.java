@@ -35,6 +35,38 @@ public class MyArrays {
         }
     }
 
+    public static void merge(int[] first, int[] second, int[] a) {
+        int iFirst = 0;
+        int iSecond = 0;
+        int j = 0;
+
+        while (iFirst < first.length && iSecond < second.length) {
+            if (first[iFirst] < second[iSecond]) {
+                a[j] = first[iFirst];
+                iFirst++;
+            } else {
+                a[j] = second[iSecond];
+                iSecond++;
+            }
+            j++;
+        }
+    }
+
+    public static void mergeSort(int[] a) {
+        if (a.length <= 1) { return; }
+        int[] first = new int[a.length / 2];
+        int[] second = new int[a.length - first.length];
+
+
+
+        // Copy the first half of a into first, the second half into second
+        // write this code yourselves…
+
+        mergeSort(first);
+        mergeSort(second);
+        merge(first, second, a);
+    }
+
     public static void main(String[] args) {
         /*int[] arr1 = {3, 2, 5, 1};
 
@@ -67,12 +99,14 @@ public class MyArrays {
         int[] selectionNumbers = numbers.clone();
         int[] insertionNumbers = numbers.clone();
         int[] arraysSortNumbers = numbers.clone();
+        int[] mergeSortNumbers = numbers.clone();
 
         double startTime;
         double endTime;
         double duration;
 
-        System.out.println(Arrays.toString(numbers));
+        //System.out.println(Arrays.toString(numbers));
+        System.out.println("Size of array: " + numbers.length);
 
         System.out.println("Sorting array times.\n");
 
@@ -96,7 +130,14 @@ public class MyArrays {
         Arrays.sort(arraysSortNumbers);
         endTime = System.nanoTime();
         duration = (endTime - startTime) / 1000000;
-        System.out.println("Duration of selection array: " + duration + "ms");
+        System.out.println("Duration of Arrays.sort: " + duration + "ms");
         // Why does Arrays.sort slower? Surely TimSort is designed to be fast?
+
+        System.out.println("\nMerge sort method.");
+        startTime = System.nanoTime();
+        mergeSort(mergeSortNumbers);
+        endTime = System.nanoTime();
+        duration = (endTime - startTime) / 1000000;
+        System.out.println("Duration of merge sort array: " + duration + "ms");
     }
 }
